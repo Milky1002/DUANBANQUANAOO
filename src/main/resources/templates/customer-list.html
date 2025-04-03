@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh Sách Khách Hàng</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Thêm Font Awesome để sử dụng các icon -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    /* Header */
+    header {
+      background-color: #fff;
+      padding: 20px 40px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .navbar ul li {
+      margin-right: 20px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #e91e63;
+    }
+
+    /* Search and Account Section */
+    .header-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .search-btn {
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .search-btn i {
+      font-size: 18px;
+    }
+
+    .search-btn:hover {
+      background-color: #d81b60;
+    }
+
+    .account, .cart {
+      margin-left: 20px;
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .account:hover, .cart:hover {
+      color: #e91e63;
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .cart {
+      margin-left: 20px;
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    /* Banner Section */
+    .banner {
+      background-color: #f5f5f5;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 20px;
+    }
+
+    .banner h2 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .shop-now {
+      display: inline-block;
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .shop-now:hover {
+      background-color: #d81b60;
+    }
+
+
+
+    .header-container h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .add-customer-btn {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .add-customer-btn a {
+      text-decoration: none;
+      color: white;
+      background-color: #e91e63;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-customer-btn a:hover {
+      background-color: #d81b60;
+    }
+    .search-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .search-container input,
+    .search-container select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-right: 10px;
+    }
+
+    .search-container button {
+      padding: 8px 12px;
+      font-size: 16px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background-color: #d81b60;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #e91e63; /* Màu hồng */
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Phân trang */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 15px;
+    }
+
+    .pagination a {
+      text-decoration: none;
+      color: #e91e63; /* Màu hồng */
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: 1px solid #e91e63;
+      transition: background-color 0.3s ease;
+    }
+
+    .pagination a:hover {
+      background-color: #e91e63;
+      color: white;
+    }
+
+    .pagination span {
+      font-size: 16px;
+      color: #333;
+    }
+
+    /* Cải tiến phần button sửa và xóa */
+    .action-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-btns a {
+      text-decoration: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      background-color: #e91e63; /* Màu hồng */
+      transition: background-color 0.3s ease;
+    }
+
+    .action-btns a:hover {
+      background-color: #d81b60;
+    }
+
+    .action-btns .delete {
+      background-color: #f44336; /* Màu đỏ cho Xóa */
+    }
+
+    .action-btns .delete:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="logo">
+        <h1>FASHION</h1>
+      </div>
+
+      <!-- Menu Navigation -->
+      <nav class="navbar">
+        <ul>
+          <li><a href="/products">Danh sách sản phẩm</a></li>
+          <li><a href="/customers">Danh sách khách hàng</a></li>
+          <li><a href="#">Danh sách nhân viên</a></li>
+          <li><a href="#">Hóa đơn</a></li>
+          <li><a href="#">Thống kê</a></li>
+          <li><a href="#">Người dùng</a></li>
+
+        </ul>
+      </nav>
+
+      <!-- Search & Account -->
+      <div class="header-actions">
+        <input type="text" class="search-input" placeholder="Search">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+        <div class="dropdown">
+          <a href="#" class="account"><i class="fas fa-user"></i></a>
+          <div class="dropdown-content">
+            <a href="#">Thông tin</a>
+            <a href="#">Tài khoản</a>
+            <a href="#">Đăng xuất</a>
+          </div>
+        </div>
+        <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner">
+      <h2>New women looks</h2>
+      <a href="#" class="shop-now">Shop now</a>
+    </div>
+  </header>
+<h1>Danh Sách Khách Hàng</h1>
+
+
+<main>
+  <!-- Phần tìm kiếm và lọc -->
+  <div class="search-container">
+    <form action="/customers" method="GET">
+      <input type="text" name="search" placeholder="Tìm kiếm khách hàng" th:value="${searchQuery}">
+
+      <select name="genderFilter">
+        <option value="">Chọn giới tính</option>
+        <option value="Nam" th:selected="${genderFilter == 'Nam'}">Nam</option>
+        <option value="Nữ" th:selected="${genderFilter == 'Nữ'}">Nữ</option>
+      </select>
+
+      <button type="submit"><i class="fas fa-search"></i> Tìm Kiếm</button>
+    </form>
+  </div>
+
+  <!-- Nút Thêm Khách Hàng -->
+  <div class="add-customer-btn">
+    <a href="/customers/add">
+      <i class="fas fa-plus"></i> Thêm Khách Hàng
+    </a>
+  </div>
+
+  <!-- Bảng khách hàng -->
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên Khách Hàng</th>
+      <th>Email</th>
+      <th>Số Điện Thoại</th>
+      <th>Địa Chỉ</th>
+      <th>Giới Tính</th>
+      <th>Ngày Sinh</th>
+      <th>Ngày Tạo</th>
+      <th>Thao Tác</th> <!-- Thêm cột thao tác -->
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Lặp qua danh sách khách hàng -->
+    <tr th:each="customer : ${customers.content}">
+      <td th:text="${customer.id}"></td>
+      <td th:text="${customer.name}"></td>
+      <td th:text="${customer.email}"></td>
+      <td th:text="${customer.phone}"></td>
+      <td th:text="${customer.address}"></td>
+      <td th:text="${customer.gender}"></td>
+      <td th:text="${customer.birthDate}"></td>
+      <td th:text="${customer.createdAt}"></td>
+      <td class="action-btns">
+        <!-- Nút Sửa với icon -->
+        <a th:href="@{/customers/edit/{id}(id=${customer.id})}" class="edit">
+          <i class="fas fa-edit"></i> Sửa
+        </a>
+        <!-- Nút Xóa với icon -->
+        <a th:href="@{/customers/delete/{id}(id=${customer.id})}" class="delete">
+          <i class="fas fa-trash"></i> Xóa
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Phân trang -->
+  <div class="pagination">
+    <span>Trang <span th:text="${currentPage + 1}"></span> / <span th:text="${totalPages}"></span></span>
+    <div>
+      <a th:href="@{/customers?page=0}">Đầu</a>
+      <a th:href="@{/customers?page=${currentPage - 1}}" th:if="${currentPage > 0}">Trước</a>
+      <a th:href="@{/customers?page=${currentPage + 1}}" th:if="${currentPage < totalPages - 1}">Sau</a>
+      <a th:href="@{/customers?page=${totalPages - 1}}">Cuối</a>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh Sách Sản Phẩm</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* styles.css */
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    /* Header */
+    header {
+      background-color: #fff;
+      padding: 20px 40px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .navbar ul li {
+      margin-right: 20px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #e91e63;
+    }
+
+    /* Search and Account Section */
+    .header-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .search-btn {
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .search-btn i {
+      font-size: 18px;
+    }
+
+    .search-btn:hover {
+      background-color: #d81b60;
+    }
+
+    .account, .cart {
+      margin-left: 20px;
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .account:hover, .cart:hover {
+      color: #e91e63;
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 160px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .cart {
+      margin-left: 20px;
+      color: #333;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    /* Banner Section */
+    .banner {
+      background-color: #f5f5f5;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 20px;
+    }
+
+    .banner h2 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .shop-now {
+      display: inline-block;
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .shop-now:hover {
+      background-color: #d81b60;
+    }
+
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    td {
+      vertical-align: middle;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover {
+      color: #45a049;
+    }
+
+    img {
+      border-radius: 8px;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+
+    /* Icon buttons */
+    .icon-button {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 10px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      color: white;
+      background-color: #4CAF50;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .icon-button:hover {
+      background-color: #45a049;
+    }
+
+    .icon-button i {
+      margin-right: 5px;
+    }
+
+    .icon-button.delete {
+      background-color: red;
+    }
+
+    .icon-button.delete:hover {
+      background-color: darkred;
+    }
+
+
+    /*filter*/
+    /* styles.css */
+    .filter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-form label {
+      font-size: 16px;
+      font-weight: bold;
+      width: 150px;
+    }
+
+    .filter-form input, .filter-form select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+
+    .filter-form button {
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .filter-form button:hover {
+      background-color: #d81b60;
+    }
+/*...*/
+    /* styles.css */
+
+    /* Tìm kiếm sản phẩm */
+    .search-form {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .search-form input {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 2px solid #ddd;
+    }
+
+    .search-form button {
+      padding: 10px 20px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-form button:hover {
+      background-color: #d81b60;
+    }
+
+  </style>
+
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <h1>FASHION</h1>
+    </div>
+
+    <!-- Menu Navigation -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="/products">Danh sách sản phẩm</a></li>
+        <li><a href="/customers">Danh sách khách hàng</a></li>
+        <li><a href="#">Danh sách nhân viên</a></li>
+        <li><a href="#">Hóa đơn</a></li>
+        <li><a href="#">Thống kê</a></li>
+        <li><a href="#">Người dùng</a></li>
+
+      </ul>
+    </nav>
+
+    <!-- Search & Account -->
+    <div class="header-actions">
+      <input type="text" class="search-input" placeholder="Search">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+      <div class="dropdown">
+        <a href="#" class="account"><i class="fas fa-user"></i></a>
+        <div class="dropdown-content">
+          <a href="#">Thông tin</a>
+          <a href="#">Tài khoản</a>
+          <a href="#">Đăng xuất</a>
+        </div>
+      </div>
+      <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+
+  <!-- Banner Section -->
+  <div class="banner">
+    <h2>New women looks</h2>
+    <a href="#" class="shop-now">Shop now</a>
+  </div>
+</header>
+<br>
+<form id="filterForm" action="/products" method="get" class="filter-form">
+  <label for="name">Tên Sản Phẩm:</label>
+  <input type="text" name="name" id="name" placeholder="Tìm sản phẩm">
+
+<!--  <label for="category">Danh Mục:</label>-->
+<!--  <select name="category" id="category">-->
+<!--    <option value="">Chọn danh mục</option>-->
+<!--    <option value="women">Nữ</option>-->
+<!--    <option value="men">Nam</option>-->
+<!--    <option value="accessories">Phụ Kiện</option>-->
+<!--    <option value="bags">Túi xách</option>-->
+<!--  </select>-->
+
+  <label for="minPrice">Giá Min:</label>
+  <input type="number" name="minPrice" id="minPrice" placeholder="Giá Min" min="0">
+
+  <label for="maxPrice">Giá Max:</label>
+  <input type="number" name="maxPrice" id="maxPrice" placeholder="Giá Max" min="0">
+
+  <button type="submit">Lọc Sản Phẩm</button>
+</form>
+<br>
+
+<form action="/products/search" method="get" class="search-form">
+  <input type="text" name="name" id="name" placeholder="Tìm sản phẩm..." />
+  <button type="submit">Tìm Kiếm</button>
+</form>
+
+
+<h1>Danh Sách Sản Phẩm</h1>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Tên Sản Phẩm</th>
+    <th>Mô Tả</th>
+    <th>Giá</th>
+    <th>Số Lượng</th>
+    <th>Thao Tác</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="product : ${products}">
+    <td th:text="${product.id}"></td>
+    <td th:text="${product.name}"></td>
+    <td th:text="${product.description}"></td>
+    <td th:text="${product.price}"></td>
+    <td th:text="${product.quantityInStock}"></td>
+    <td>
+      <!-- Icon Sửa -->
+      <a th:href="@{/products/edit/{id}(id=${product.id})}">
+        <i class="fas fa-edit" style="color: blue;"></i> Sửa
+      </a>
+      <!-- Icon Xóa -->
+      <a th:href="@{/products/delete/{id}(id=${product.id})}">
+        <i class="fas fa-trash" style="color: red;"></i> Xóa
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a href="/products/add">Thêm Sản Phẩm</a>
+</body>
+</html>

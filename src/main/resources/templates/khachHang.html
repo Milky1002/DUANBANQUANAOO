@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            padding: 20px 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #e91e63;
+        }
+
+        /* Search and Account Section */
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .search-btn {
+            background-color: #e91e63;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-btn i {
+            font-size: 18px;
+        }
+
+        .search-btn:hover {
+            background-color: #d81b60;
+        }
+
+        .account, .cart {
+            margin-left: 20px;
+            color: #333;
+            font-size: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .account:hover, .cart:hover {
+            color: #e91e63;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .cart {
+            margin-left: 20px;
+            color: #333;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        /* Banner Section */
+        .banner {
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 20px;
+        }
+
+        .banner h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .shop-now {
+            display: inline-block;
+            background-color: #e91e63;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .shop-now:hover {
+            background-color: #d81b60;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="logo">
+            <h1>FASHION</h1>
+        </div>
+
+        <!-- Menu Navigation -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="/products">Danh sách sản phẩm</a></li>
+                <li><a href="/customers">Danh sách khách hàng</a></li>
+                <li><a href="#">Danh sách nhân viên</a></li>
+                <li><a href="#">Hóa đơn</a></li>
+                <li><a href="#">Thống kê</a></li>
+                <li><a href="#">Người dùng</a></li>
+
+            </ul>
+        </nav>
+
+        <!-- Search & Account -->
+        <div class="header-actions">
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <div class="dropdown">
+                <a href="#" class="account"><i class="fas fa-user"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Thông tin</a>
+                    <a href="#">Tài khoản</a>
+                    <a href="#">Đăng xuất</a>
+                </div>
+            </div>
+            <a href="#" class="cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <h2>New women looks</h2>
+        <a href="#" class="shop-now">Shop now</a>
+    </div>
+</header>
+</body>
+</html>

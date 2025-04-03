@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sửa Khách Hàng</title>
+</head>
+<body>
+<h1>Sửa Thông Tin Khách Hàng</h1>
+
+<form action="/customers/edit" method="post">
+  <input type="hidden" name="id" th:value="${khachHang.id}">
+
+  <label for="name">Tên Khách Hàng:</label>
+  <input type="text" name="name" id="name" th:value="${khachHang.name}" required><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" th:value="${khachHang.email}" required><br><br>
+
+  <label for="phone">Số Điện Thoại:</label>
+  <input type="text" name="phone" id="phone" th:value="${khachHang.phone}" required><br><br>
+
+  <label for="address">Địa Chỉ:</label>
+  <input type="text" name="address" id="address" th:value="${khachHang.address}" required><br><br>
+
+  <label for="gender">Giới Tính:</label>
+  <input type="text" name="gender" id="gender" th:value="${khachHang.gender}" required><br><br>
+
+  <label for="birthDate">Ngày Sinh:</label>
+  <input type="date" name="birthDate" id="birthDate" th:value="${khachHang.birthDate}" required><br><br>
+
+  <button type="submit">Sửa Khách Hàng</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm Khách Hàng</title>
+</head>
+<body>
+<h1>Thêm Khách Hàng</h1>
+
+<form action="/customers/add" method="post">
+  <label for="name">Tên Khách Hàng:</label>
+  <input type="text" name="name" id="name" required><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" required><br><br>
+
+  <label for="phone">Số Điện Thoại:</label>
+  <input type="text" name="phone" id="phone" required><br><br>
+
+  <label for="address">Địa Chỉ:</label>
+  <input type="text" name="address" id="address" required><br><br>
+
+  <label for="gender">Giới Tính:</label>
+  <input type="text" name="gender" id="gender" required><br><br>
+
+  <label for="birthDate">Ngày Sinh:</label>
+  <input type="date" name="birthDate" id="birthDate" required><br><br>
+
+  <button type="submit">Thêm Khách Hàng</button>
+</form>
+</body>
+</html>

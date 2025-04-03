@@ -1,0 +1,212 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #2e1b47;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.banner {
+    width: 100%;
+    height: 300px; /* Điều chỉnh chiều cao của banner */
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Giúp ảnh không bị méo */
+    filter: brightness(60%);
+}
+
+.navbar {
+    background-color: #2e1b47;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: #f39c12;
+    color: white;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 350px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #f39c12;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #e67e22;
+}
+
+/* Table Styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    vertical-align: middle;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    color: #45a049;
+}
+
+img {
+    border-radius: 8px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+/* Icon buttons */
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    background-color: #4CAF50;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+    background-color: #45a049;
+}
+
+.icon-button i {
+    margin-right: 5px;
+}
+
+.icon-button.delete {
+    background-color: red;
+}
+
+.icon-button.delete:hover {
+    background-color: darkred;
+}
