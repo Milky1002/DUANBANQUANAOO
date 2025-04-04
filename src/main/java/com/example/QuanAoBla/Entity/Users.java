@@ -36,11 +36,7 @@ public class Users {
     @Column(name = "Phone")
     private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "RoleID")
-    private Roles roles;
-
-    @Column(name = "Active")
+    @Column(name = "IsActive")
     private Integer active;
 
     @Column(name = "CreatedAt")

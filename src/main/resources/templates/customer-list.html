@@ -423,7 +423,7 @@
 
   <!-- Phân trang -->
   <div class="pagination">
-    <span>Trang <span th:text="${currentPage + 1}"></span> / <span th:text="${totalPages}"></span></span>
+    <span>Trang <span th:text="${currentPage != null ? currentPage + 1 : 1}"></span> / <span th:text="${totalPages}"></span></span>
     <div>
       <a th:href="@{/customers?page=0}">Đầu</a>
       <a th:href="@{/customers?page=${currentPage - 1}}" th:if="${currentPage > 0}">Trước</a>
